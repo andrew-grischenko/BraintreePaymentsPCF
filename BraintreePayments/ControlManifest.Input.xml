@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="Technomancy" constructor="BraintreePayments" version="0.0.1" display-name-key="BraintreePayments" description-key="BraintreePayments description" control-type="standard">
+    <property name="TokenizationKey" display-name-key="TokenizationKey" description-key="Braintree Tokenization Key" of-type="SingleLine.Text" usage="input" required="true" default-value=""/>
+    <property name="CheckoutURL" display-name-key="CheckoutURL" description-key="Checkout URL" of-type="SingleLine.Text" usage="input" required="true" default-value=""/>
+    <property name="PaymentAmount" display-name-key="PaymentAmount" description-key="Payment amount" of-type="Decimal" usage="input" required="true" default-value="1"/>
+    <property name="PaymentStatus" display-name-key="PaymentStatus" description-key="Payment status" of-type="SingleLine.Text" usage="bound" required="true" default-value="new"/>
+<!--     <property name="Reset" display-name-key="Reset" description-key="Reset from start" of-type="TwoOptions" usage="input" required="false" default-value="false"/>
+   
+-->
+<!--
+   <property name="CardFontSize" display-name-key="CardFontSize" description-key="Card element font size" of-type="Decimal" usage="input" required="true" default-value="22"/>
+    <property name="ButtonFontSize" display-name-key="ButtonFontSize" description-key="Submit button font size" of-type="Decimal" usage="input" required="true" default-value="22"/>
+    <property name="ErrorFontSize" display-name-key="ErrorFontSize" description-key="Error message font size" of-type="Decimal" usage="input" required="true" default-value="22"/>
+-->
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/styles.css" order="1" />
+    </resources>
+
+  </control>
+</manifest>
