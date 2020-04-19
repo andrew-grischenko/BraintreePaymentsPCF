@@ -1,8 +1,14 @@
-.hidden {
-    display: none;
+:root {
+    --button-color: rgb(31, 55, 187);
+    --button-font-size: 20pt;
+    --default-font-size: 18pt;
 }
 
-.button-hidden {
+.control-container {
+    font-size: var(--default-font-size);
+}
+
+.hidden {
     display: none;
 }
 
@@ -41,14 +47,14 @@
 }
 
 .submit-buton {
-    background: rgb(31,55,187);
+    background: var(--button-color);
     border-radius: 3px;
     color: white;
     border: 0;
     padding: 12px 16px;
     margin-top: 16px;
     font-weight: 600;
-    font-size: 18pt;
+    font-size: var(--button-font-size);
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
