@@ -20,6 +20,7 @@ export class BraintreePayments implements ComponentFramework.StandardControl<IIn
 	private card_font_size: number;
 	private default_font_size: number;
 	private delayed_init_handler: any;
+	private has_been_reset: boolean;
 	//private error_font_size: number;
 	/**
 	 * Empty constructor.
@@ -40,6 +41,7 @@ export class BraintreePayments implements ComponentFramework.StandardControl<IIn
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement)
 	{
 		this.payment_status = STATUS_UNINITIALISED;
+		this.has_been_reset = false;
 		this._notifyOutputChanged = notifyOutputChanged;
 
 		container.appendChild(this.getHTMLElements());
@@ -55,15 +57,19 @@ export class BraintreePayments implements ComponentFramework.StandardControl<IIn
 	{
 		if(this.tokenization_key != context.parameters.TokenizationKey.raw)
 		{
-			this.setStatus(STATUS_UNINITIALISED);
-			if(this.dropin_ui)
-				this.dropin_ui.teardown();
+			this.cleanupBraintreeClient(true);
 
 			this.tokenization_key = context.parameters.TokenizationKey.raw || "";
 
-			if(this.tokenization_key)
-				this.initBraintreeClient();
+			this.initBraintreeClient();
 		}
+
+		if(context.parameters.Reset.raw && !this.has_been_reset ){
+			this.has_been_reset = true;
+			this.cleanupBraintreeClient(false);
+			this.initBraintreeClient();
+		} else
+			this.has_been_reset = false;
 
 		if(this.payment_amount != context.parameters.PaymentAmount.raw && context.parameters.PaymentAmount.raw)
 			this.payment_amount = context.parameters.PaymentAmount.raw;
@@ -81,12 +87,10 @@ export class BraintreePayments implements ComponentFramework.StandardControl<IIn
 		   this.error_font_size != context.parameters.ErrorFontSize.raw*/)
 		{
 			this.card_font_size = context.parameters.CardFontSize.raw || 20;
-			console.log("updating drop in, font size NOW=" + this.card_font_size + 'pt' );
 			//this.error_font_size = context.parameters.ErrorFontSize.raw || 20;
-			if(this.dropin_ui){
-				this.dropin_ui.teardown();
-				this.initBraintreeClient();
-			}
+			this.cleanupBraintreeClient(false);
+			this.initBraintreeClient();
+			
 		}
 		
 		if(this.button_font_size != context.parameters.ButtonFontSize.raw)
@@ -112,7 +116,16 @@ export class BraintreePayments implements ComponentFramework.StandardControl<IIn
 	 */
 	public destroy(): void
 	{
-		// Add code to cleanup control if necessary
+		this.cleanupBraintreeClient(false);// Add code to cleanup control if necessary
+	}
+
+	private cleanupBraintreeClient(isThroughUnititialised: boolean)
+	{
+		if(this.dropin_ui)
+			this.dropin_ui.teardown();
+		this.dropin_ui = undefined;
+		if(isThroughUnititialised)
+			this.setStatus(STATUS_UNINITIALISED);
 	}
 
 	private initBraintreeClient()
@@ -185,7 +198,7 @@ export class BraintreePayments implements ComponentFramework.StandardControl<IIn
 								.then( (data: any ) => {
 									if(data.success){
 										this.setStatus(STATUS_COMPLETED);
-										instance.teardown();
+										this.cleanupBraintreeClient(false);
 									} else {
 										this.setStatus(STATUS_ERROR);
 										document.querySelector('#error-label')!.textContent = "There's been an error processing payment: " + data.message;
@@ -208,8 +221,6 @@ export class BraintreePayments implements ComponentFramework.StandardControl<IIn
 			}
 		}, DELAYED_INIT);
 
-
-		
 	}
 
 	private errorInitBraintreeClient(errorMessage: string)
