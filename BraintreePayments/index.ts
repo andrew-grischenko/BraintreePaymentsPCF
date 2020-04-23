@@ -150,10 +150,10 @@ export class BraintreePayments implements ComponentFramework.StandardControl<IIn
 						overrides: {
 						styles: {
 							input: {
-
+								'font-size': this.card_font_size + 'pt'
 							},
 							'.number': {
-								'font-size': this.card_font_size + 'pt'
+
 							// Custom web fonts are not supported. Only use system installed fonts.
 							},
 							'.invalid': {
