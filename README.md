@@ -4,7 +4,7 @@ This is a simple Power App code component (PCF) that allows to facilitate credit
 
 ## Install and Use
 
-Before you begin, create a [Braintree Sanbox account here](https://www.braintreepayments.com/au/sandbox) – it’s free for testing purposes. You will need it to facilitate the payments.
+Before you begin, create a [Braintree Sandbox account here](https://www.braintreepayments.com/au/sandbox) – it’s free for testing purposes. You will need it to facilitate the payments.
 
 ### Import as a solution package
 
@@ -16,7 +16,7 @@ Skip the next section *"Build from the source"* if you just want to set up and u
 
 ### Build from the source
 
-Prerequsites: 
+Prerequisites: 
 * NPM 
 * Windows OS
 * VS Code
@@ -30,7 +30,7 @@ Prerequsites:
 4. Follow the instruction here on how to
 
 * build and test the component: https://docs.microsoft.com/en-us/powerapps/developer/component-framework/implementing-controls-using-typescript 
-* packgae and deploy the component: https://docs.microsoft.com/en-us/powerapps/developer/component-framework/import-custom-controls 
+* package and deploy the component: https://docs.microsoft.com/en-us/powerapps/developer/component-framework/import-custom-controls 
 
 ### Setup the code component BraintreePayments and the app logic ###
 
@@ -41,7 +41,7 @@ Prerequsites:
 * Select the **BraintreePayments** component and import it
 * On the left panel find the component and add it to the screen
 
-2. Set up the **TokenizationKey** attribute with the **Tokenization key** from your Braintree account. See more details in [Braintreee docuemntation here](https://developers.braintreepayments.com/guides/authorization/overview). For the Sandbox environemnt it should start with "sandbox_"
+2. Set up the **TokenizationKey** attribute with the **Tokenization key** from your Braintree account. See more details in [Braintree documentation here](https://developers.braintreepayments.com/guides/authorization/overview). For the Sandbox environment it should start with "sandbox_"
 
 3. Setup the visual appearance of the control (optional):
 
@@ -63,7 +63,7 @@ Prerequsites:
 
 ### Setup Checkout Azure Function
 
-The integration with a payment gateway requires a secure server componet to communicate with the Braintree API. This solution implements this as an Azure Function - a simple Node.js fucntion taking the payment "nonce" and a payment amount as parametres, initiating a ["sale" transaction](https://developers.braintreepayments.com/reference/request/transaction/sale/node) and returning the result. 
+The integration with a payment gateway requires a secure server componet to communicate with the Braintree API. This solution implements this as an Azure Function - a simple Node.js function taking the payment "nonce" and a payment amount as parameters, initiating a ["sale" transaction](https://developers.braintreepayments.com/reference/request/transaction/sale/node) and returning the result. 
 
 Please follow the installation instructions of the [Braintree Azure Function repository](https://github.com/andrew-grischenko/BraintreePaymentsAzureFunction) to setup th eserver component. 
 
