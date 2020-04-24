@@ -4,13 +4,13 @@ This is a simple Power App code component (PCF) that allows to facilitate credit
 
 ## Install and Use
 
-Before you negin, create a Braintree Sanbox account here: https://www.braintreepayments.com/au/sandbox – it’s free for testing purposes. You will need it to facilitate the payments.
+Before you begin, create a [Braintree Sanbox account here](https://www.braintreepayments.com/au/sandbox) – it’s free for testing purposes. You will need it to facilitate the payments.
 
 ### Import as a solution package
 
 Download and import the managed solution package [**BraintreePayments_1_0_0_5_managed.zip**](https://github.com/andrew-grischenko/BraintreePaymentsPCF/blob/master/BraintreePCFSolution/package/BraintreePayments_1_0_0_5_managed.zip) or unmanaged package [**BraintreePayments_1_0_0_5_unmanaged.zip**](https://github.com/andrew-grischenko/BraintreePaymentsPCF/blob/master/BraintreePCFSolution/package/BraintreePayments_1_0_0_5_unmanaged.zip). As a result, you should get the solution **BraintreePayments** containing:
-* Code PCF component **tema_Technomancy.BraintreePayments** hosting the credit capture form from Braintree
-* Demo canvas Power App **BraintreePaymentsDemo** using the above two
+* Code PCF component **tema_Technomancy.BraintreePayments** hosting the credit capture [Drop-in UI](https://developers.braintreepayments.com/start/drop-in) from Braintree
+* Demo canvas Power App **BraintreePaymentsDemo** 
 
 Skip the next section *"Build from the source"* if you just want to set up and use the solution. 
 
@@ -63,7 +63,7 @@ Prerequsites:
 
 ### Setup Checkout Azure Function
 
-The integration with a payment gateway requires a secure server componet to communicate with the Braintree API. This solution implements this as an Azure Function - a simple Node.js fucntion takingthe payment "nonce" and a payment amount as parametres, initiating a ["sale" transaction](https://developers.braintreepayments.com/reference/request/transaction/sale/node) and returning the result. 
+The integration with a payment gateway requires a secure server componet to communicate with the Braintree API. This solution implements this as an Azure Function - a simple Node.js fucntion taking the payment "nonce" and a payment amount as parametres, initiating a ["sale" transaction](https://developers.braintreepayments.com/reference/request/transaction/sale/node) and returning the result. 
 
 Please follow the installation instructions of the [Braintree Azure Function repository](https://github.com/andrew-grischenko/BraintreePaymentsAzureFunction) to setup th eserver component. 
 
