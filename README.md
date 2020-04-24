@@ -57,7 +57,7 @@ Prerequsites:
 
        If(BraintreePayments.PaymentStatus = "completed", Navigate(Receipt)) 
        
-![OnChange handler](https://technomancy.com.au/wp-content/uploads/2020/03/app-1024x522.png)
+![OnChange handler](https://technomancy.com.au/wp-content/uploads/2020/04/Screen-Shot-2020-04-24-at-10.22.46-pm.png)
 
 7. For test integration, you can use the card number **“4242424242424242”** with any future expiry date. See here for more test cards: https://developers.braintreepayments.com/guides/credit-cards/testing-go-live/node 
 
