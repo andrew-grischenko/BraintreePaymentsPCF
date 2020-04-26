@@ -1,15 +1,17 @@
 # BraintreePaymentsPCF
 
-This is a simple Power App code component (PCF) that allows to facilitate credit card payments in Power Apps via [Braintree payments](https://www.braintreepayments.com/). 
+This is a simple Power App code component (PCF) that allows to facilitate credit card and PayPal payments in Power Apps via [Braintree payments](https://www.braintreepayments.com/). 
 
 ## Install and Use
 
 Before you begin, create a [Braintree Sandbox account here](https://www.braintreepayments.com/au/sandbox) – it’s free for testing purposes. You will need it to facilitate the payments.
 
+If you want to use PayPal as a payment option, you also need to set up a developer sandbox acount with PayPal and link it to Braintree account. Follow [these instructions](https://developers.braintreepayments.com/guides/paypal/testing-go-live/node#linked-paypal-testing) on how to do this.
+
 ### Import as a solution package
 
-Download and import the managed solution package [**BraintreePayments_1_0_0_5_managed.zip**](https://github.com/andrew-grischenko/BraintreePaymentsPCF/blob/master/BraintreePCFSolution/package/BraintreePayments_1_0_0_5_managed.zip) or unmanaged package [**BraintreePayments_1_0_0_5_unmanaged.zip**](https://github.com/andrew-grischenko/BraintreePaymentsPCF/blob/master/BraintreePCFSolution/package/BraintreePayments_1_0_0_5_unmanaged.zip). As a result, you should get the solution **BraintreePayments** containing:
-* Code PCF component **tema_Technomancy.BraintreePayments** hosting the credit capture [Drop-in UI](https://developers.braintreepayments.com/start/drop-in) from Braintree
+Download and import the managed solution package [**BraintreePayments_managed.zip**](https://github.com/andrew-grischenko/BraintreePaymentsPCF/blob/master/BraintreePCFSolution/package/BraintreePayments_managed.zip) or unmanaged package [**BraintreePayments_unmanaged.zip**](https://github.com/andrew-grischenko/BraintreePaymentsPCF/blob/master/BraintreePCFSolution/package/BraintreePayments_unmanaged.zip). As a result, you should get the solution **BraintreePayments** containing:
+* Code PCF component **tema_Technomancy.BraintreePayments** hosting the [Drop-in UI](https://developers.braintreepayments.com/start/drop-in) from Braintree to capture credit card details and initate PayPal payment.
 * Demo canvas Power App **BraintreePaymentsDemo** 
 
 Skip the next section *"Build from the source"* if you just want to set up and use the solution. 
@@ -45,7 +47,7 @@ Prerequisites:
 
 3. Setup the visual appearance of the control (optional):
 
-* **DefaultFontSize** – font size of messages
+* **DefaultFontSize** – font size of messages and labels
 * **CardFontSize** – font size of the card number capture element
 * **ButtonFontSize** – font size for the Pay button
 
@@ -53,13 +55,17 @@ Prerequisites:
 
 5. Set the property **CheckoutURL** of the component with the URL of the Checkout function (see below the section **Setup Checkout Azure Function**)
 
-6. Handle the payment events – success and errors – with **OnChange** handler of the component by verifying the PaymentStatus attribute, e.g.
+6. Set the **PayPalEnabled** property to **true** if you want to use PayPal as a payment option.
+
+7. Handle the payment events – success and errors – with **OnChange** handler of the component by verifying the PaymentStatus attribute, e.g.
 
        If(BraintreePayments.PaymentStatus = "completed", Navigate(Receipt)) 
        
 ![OnChange handler](https://technomancy.com.au/wp-content/uploads/2020/04/Screen-Shot-2020-04-24-at-10.22.46-pm.png)
 
-7. For test integration, you can use the card number **“4242424242424242”** with any future expiry date. See here for more test cards: https://developers.braintreepayments.com/guides/credit-cards/testing-go-live/node 
+7. For test integration, you can use:
+* the card number **“4242424242424242”** or **411111111111111** with any future expiry date. See here for more test cards: https://developers.braintreepayments.com/guides/credit-cards/testing-go-live/node 
+* PayPal Sandbox **personal** account as set up in the beggining
 
 ### Setup Checkout Azure Function
 
