@@ -2,6 +2,7 @@
     --button-color: rgb(31, 55, 187);
     --button-font-size: 20pt;
     --default-font-size: 18pt;
+    --smaller-font-size: 16pt;
 }
 
 .control-container {
@@ -85,7 +86,6 @@
 }
 
 [data-braintree-id="choose-a-way-to-pay"],
-.braintree-large-button,
 .braintree-sheet__header .braintree-sheet__text,
 .braintree-sheet__header .braintree-sheet__label,
 .braintree-sheet__content--form .braintree-form__field-group .braintree-form__label
@@ -93,9 +93,30 @@
     font-size: var(--default-font-size);   
 }
 
+.braintree-option 
+{
+    padding: 15px 20px; 
+}
+
 .braintree-option .braintree-option__label
 {
     font-size: var(--default-font-size);  
     text-align: left; 
+}
+
+.braintree-sheet__content--form .braintree-form__field-group .braintree-form__label,
+.braintree-large-button
+{
+    font-size: var(--smaller-font-size);   
+}
+
+.braintree-sheet__content--button
+{
+    padding: 50px 20px;
+}
+
+[data-braintree-id="options"]
+{
+    margin-top: 25px;
 }
 

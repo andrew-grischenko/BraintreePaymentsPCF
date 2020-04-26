@@ -91,6 +91,8 @@ export class BraintreePayments implements ComponentFramework.StandardControl<IIn
 		{
 			this.default_font_size = context.parameters.DefaultFontSize.raw || 18;
 			document.documentElement.style.setProperty("--default-font-size", this.default_font_size + "pt"); 
+			const smaller_font_size = this.default_font_size - ((this.default_font_size > 3) ? 3 : 0)
+			document.documentElement.style.setProperty("--smaller-font-size", smaller_font_size + "pt"); 
 		}
 
 		if(this.card_font_size != context.parameters.CardFontSize.raw /*|| 
