@@ -86,16 +86,29 @@
 }
 
 [data-braintree-id="choose-a-way-to-pay"],
+[data-braintree-id="methods-label"]
 .braintree-sheet__header .braintree-sheet__text,
 .braintree-sheet__header .braintree-sheet__label,
+.braintree-heading,
 .braintree-sheet__content--form .braintree-form__field-group .braintree-form__label
 {
     font-size: var(--default-font-size);   
 }
 
-.braintree-option 
+.braintree-option,
+[data-braintree-id="methods-container"]
 {
     padding: 15px 20px; 
+}
+
+[data-braintree-id="methods-label"]
+{
+    z-index: 5;
+}
+
+.braintree-method .braintree-method__icon
+{
+    padding: 7px;
 }
 
 .braintree-option .braintree-option__label
@@ -105,7 +118,9 @@
 }
 
 .braintree-sheet__content--form .braintree-form__field-group .braintree-form__label,
-.braintree-large-button
+.braintree-large-button,
+.braintree-method .braintree-method__label,
+.braintree-method .braintree-method__label .braintree-method__label--small
 {
     font-size: var(--smaller-font-size);   
 }
