@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="Technomancy" constructor="BraintreePayments" version="0.2.1" display-name-key="BraintreePayments" description-key="BraintreePayments description" control-type="standard">
+  <control namespace="Technomancy" constructor="BraintreePayments" version="0.2.2" display-name-key="BraintreePayments" description-key="BraintreePayments description" control-type="standard">
     <property name="TokenizationKey" display-name-key="TokenizationKey" description-key="Braintree Tokenization Key" of-type="SingleLine.Text" usage="input" required="true" default-value=""/>
     <property name="CheckoutURL" display-name-key="CheckoutURL" description-key="Checkout URL" of-type="SingleLine.Text" usage="input" required="true" default-value=""/>
     <property name="PaymentAmount" display-name-key="PaymentAmount" description-key="Payment amount" of-type="Decimal" usage="input" required="true" default-value="1"/>

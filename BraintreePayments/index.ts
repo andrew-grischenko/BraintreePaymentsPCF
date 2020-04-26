@@ -181,7 +181,14 @@ export class BraintreePayments implements ComponentFramework.StandardControl<IIn
 						}
 				},
 				paypal: {
-					flow: 'vault'
+					flow: 'vault',
+					buttonStyle: {
+						color: 'blue',
+						shape: 'rect',
+						size: 'responsive',
+						label: 'pay',
+						tagline: 'false'
+					  }
 				}
 			} :
 			{
